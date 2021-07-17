@@ -8,7 +8,8 @@ import Search from './Search';
 
 
 const HomePage = () => {
-    const [recipe, setRecipe]= useState();
+    const [recipe, setRecipe]= useState(); //modificar estados, esta mal
+
     const [pag, setPag] = useState(1);
     const [page, setPage] = useState([]);
 

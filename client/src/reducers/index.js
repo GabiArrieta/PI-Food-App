@@ -1,4 +1,4 @@
-import { GET_RECIPES, GET_RECIPES_NAME, GET_RECIPES_ID, GET_DIETS } from '../actions/index';
+import { GET_RECIPES, GET_RECIPES_NAME, GET_RECIPES_ID, GET_DIETS, ADD_RECIPE } from '../actions/index';
 
 const initialState = {
     recipes : [],
@@ -28,6 +28,8 @@ const reducer = ( state = initialState, action ) => {
                 ...state,
                 diets : action.payload
             };
+        case ADD_RECIPE: 
+            return state;
         default : 
             return state;
                    
