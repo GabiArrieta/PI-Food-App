@@ -17,6 +17,7 @@ const HomePage = () => {
     const state = useSelector(state => state);
 
     const maxPages = Math.ceil(state.recipes / 9);
+    
 
     const paginater = (recipes, index) => {
         const pags = recipes.slice((index-1)*8, (index*8));

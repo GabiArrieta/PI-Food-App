@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getRecipes, getDiets, postRecipe } from "../actions/index";
+import { getRecipes, getDiets } from "../actions/index";
 import swal from 'sweetalert';
 
 import axios from 'axios';
@@ -193,17 +193,12 @@ const Form = () => {
             {diets.length > 0 &&
                 diets.map((diet) => (
                     <label
-							          // htmlFor={diet.id
-												// .toLowerCase()
-												// .replace(' ', '')
-												// .replace('-', '')}
+                    	  key={diet.id}
+							          htmlFor={diet.id}
 										>
 											<input
-												key={diet.id}
-												// id={diet.id
-												// 	.toLowerCase()
-												// 	.replace(' ', '')
-												// 	.replace('-', '')}
+											
+												id={diet.id}
 												type='checkbox'
 												name={diet.title
 													.toLowerCase()
