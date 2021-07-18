@@ -1,6 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getRecipesName, filterAtoZ, filterZtoA, filterHighToLow, filterLowToHigh, filterScoreHealthHigh, filterScoreHealthLow } from "../actions/index";
+
+import {
+    getRecipes, 
+    getRecipesName,
+    getDiets,
+    getRecipesForDiet,
+    filterAtoZ, 
+    filterZtoA, 
+    filterHighToLow, 
+    filterLowToHigh, 
+    filterScoreHealthHigh, 
+    filterScoreHealthLow 
+} from "../actions/index";
 
 
 const Search = () => {
@@ -8,10 +20,15 @@ const Search = () => {
     const [alfab, setAlfab] = useState(0);
     const [score, setScore] = useState(0);
     const [scoreHealth, setScoreHealth] = useState(0);
+    const [type, setType] = useState("");
 
     const dispatch = useDispatch();
+    const state = useSelector((state) => state);
 
-    
+    useEffect(() => {
+        dispatch(getDiets());
+    }, [dispatch])
+ 
     const handleChange = (e) => {
         setRecipe(e.target.value);    
     }
@@ -51,6 +68,17 @@ const Search = () => {
 
         setTimeout(() => setScoreHealth(0), 3000);
     }
+
+    const handleDiet = (e) => {
+        e.preventDefault();
+        setType(e.target.value)
+        if (e.target.value === "All") {
+            dispatch(getRecipes());
+        } else {
+            dispatch(getRecipesForDiet(e.target.value))
+        };
+        setTimeout(() => setType(""), 2000);
+    };
 
     return (
         <div>
@@ -111,6 +139,20 @@ const Search = () => {
             </select>
             </div>
 
+            <div>
+            <span>Filter By Diet: </span>
+            <select value={type} name="select-diet" onChange={handleDiet} defaultValue="">
+            <option key={0} value=""> select diet type: </option>
+            <option key={1} value="All"> All </option>
+            {state.diets.map((d, i) =>
+                <option
+                    key={"select-diet" + i}
+                    value={d.title}
+                >
+                    {d.title}
+                </option>)}
+        </select>
+			</div>
         </div>
     )
 }

@@ -5,6 +5,7 @@ import {
     GET_RECIPES_NAME,
     GET_RECIPES_ID,
     GET_DIETS,
+    GET_RECIPES_FOR_DIET,
     FILTER_A_TO_Z,
     FILTER_Z_TO_A,
     FILTER_HIGH_TO_LOW,
@@ -14,7 +15,6 @@ import {
     FILTER_HEALTH_HIGH_TO_LOW,
     LOADING
 } from '../utils/constants';
-
 
 export const getRecipes = () => {
     return async (dispatch) => {
@@ -62,6 +62,19 @@ export const getDiets = () => {
     };
 };
 
+export const getRecipesForDiet = (diet) => {
+    return async (dispatch) => {
+        dispatch({type: LOADING});
+        try {
+            const recipes = await axios.get(`${URL}types/${diet}`);
+            return dispatch({ type: GET_RECIPES_FOR_DIET, payload: recipes.data });
+        } catch (e) {
+            console.log(e);
+            return dispatch({ type: GET_RECIPES_FOR_DIET, payload: [] });
+        }
+    };
+};
+
 export const filterAtoZ = () => {
     return {
         type : FILTER_A_TO_Z
@@ -97,3 +110,5 @@ export const filterScoreHealthLow = () => {
         type: FILTER_HEALTH_HIGH_TO_LOW,
     };
 };
+
+

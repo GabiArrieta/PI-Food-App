@@ -36,7 +36,7 @@ const HomePage = () => {
     return (
     <>
         <div>
-            <Search/>
+            <Search />
         </div>
 
         <div>

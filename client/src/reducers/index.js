@@ -3,6 +3,7 @@ import {
   GET_RECIPES_NAME,
   GET_RECIPES_ID,
   GET_DIETS,
+  GET_RECIPES_FOR_DIET,
   FILTER_A_TO_Z,
   FILTER_Z_TO_A,
   FILTER_HIGH_TO_LOW,
@@ -73,6 +74,12 @@ const reducer = (state = initialState, action) => {
         ...state,
         recipes: orderHighToLow(state.recipes, "healthScore"),
       };
+      case GET_RECIPES_FOR_DIET:
+            return {
+                ...state,
+                loading: false,
+                recipes: action.payload
+            };
     default:
       return state;
   }
