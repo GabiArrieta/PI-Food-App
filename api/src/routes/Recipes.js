@@ -47,37 +47,5 @@ router.get('/:id', async(req, res) => {
    
 });
 
-router.post('/', async (req, res) => {
-    const { title, summary, score, healthScore, instructions, diets } = req.body;
-    //console.log(diets);
-
-    if(!title || !summary || !(diets.length >= 1)) return res.json({msg: 'faltan datos'});
-
-  try {
-    const createRecipe = await Recipe.create({
-        title,
-        summary,
-        score,
-        healthScore,
-        instructions
-    });
-
-
-    const dietasTipos = await Diet.findAll({
-      where: {
-        title: diets,
-      },
-    });
-
-    createRecipe.setDiets(dietasTipos);
-
-    res.json(createRecipe);
-
-  } catch (error) {
-    return res.status(404).json("error al crear la receta");
-  }
-});
-
-
 
 module.exports = router;

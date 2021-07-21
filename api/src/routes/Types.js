@@ -1,5 +1,10 @@
 const { Router } = require('express');
 const { Recipe, Diet } = require("../db");
+const { allRecipes, recipeId, recipesDb } = require("../controllers");
+
+const { searchForDiets } = require('./utils.js')
+
+
 //const { setDiets } = require('../controllers');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -25,21 +30,15 @@ router.get('/', async (req, res) => {
         attributes: ['id', 'title', 'description']
     });
     return res.status(200).json(types);
-    // let total = await Diet.findAll({
-    //     attributes: ['id', 'title', 'description']
-    // });
-    // if(total.length > 0 ){
-    //     return res.json(response).status(200);
-    // } else {
-    //     let crear = await Diet.bulkCreate(typesDiets);
-    //     return res.json(crear);
-    //  }
 
-    //  let totalTypes = await Diet.findAll();
-    // let dietArreglo = await setDiets();
+});
 
-    // totalTypes.length ? res.status(200).send(totalTypes) : res.status(200).send(dietArreglo);
-
+router.get('/:type', async (req, res) => {
+    const { type } = req.params;
+    const recipeDiet = await searchForDiets(type);
+    
+    if (recipeDiet) return res.json(recipeDiet);
+    return res.status(404).json({ msg: "We're so sorry, diet type is not valid" })
 });
 
 
