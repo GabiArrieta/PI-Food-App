@@ -6,6 +6,6 @@ export const GET_RECIPES_FOR_DIET = "GET_RECIPES_FOR_DIET";
 export const DIET_FILTER = "DIET_FILTER";
 export const SWITCH_LOADING = 'SWITCH_LOADING';
 
-export let URL = "http://localhost:3007/"
+export let URL = "http://localhost:3002/"
 export const LOADING = "LOADING";
 

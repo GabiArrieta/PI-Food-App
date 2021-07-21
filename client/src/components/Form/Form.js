@@ -10,10 +10,10 @@ import axios from 'axios';
 
 const formData = {
   title: '',
-  summary: '',
   score: '',
-	healthScore: '',
+  healthScore: '',
 	instructions: '',
+  summary: '',
   diets: [],
 };
 
@@ -90,13 +90,11 @@ const Form = () => {
       !error.summary && form.summary &&
       form.diets.length ){
 
-        console.log("formulario correcto");
+        //console.log("formulario correcto");
         
-        //dispatch(postRecipe(form));
-        axios.post('http://localhost:3007/recipe', form)
+        axios.post('http://localhost:3002/recipe', form)
 
-        console.log("se envio la receta");
-        //alert("recipe added :) ");
+        //console.log("se envio la receta");
         swal({
             title: "Good job!",
             text: "Successfully added!",
