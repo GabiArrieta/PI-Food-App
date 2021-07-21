@@ -3,7 +3,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { BsStarFill, BsHeartFill, BsHeartHalf, BsHeart, BsStarHalf, BsStar } from 'react-icons/bs'
 
-const Card = ({ id, title, score, healthScore, img, diets }) => {
+import recipeImg from '../../img/recipeImg.png';
+import './card.css';
+
+const Card = ({ id, title, score, healthScore, image, diets }) => {
+
+    console.log(title, score, healthScore, image, diets );
     let scoreStar = [];
     let scoreHeart = [];
     let scoreStarTotal = [];
@@ -24,22 +29,23 @@ const Card = ({ id, title, score, healthScore, img, diets }) => {
     };
 
     return (
-        <Link to={`/recipe/${id}`}>
-            <div >
-                <h1 >{title}</h1>
-                {img ? <img src={img} alt="not found" /> : <h1>"not found"</h1>}
-                <div >
-                    <div >
+    <div>
+        <Link className='link' to={`/recipes/${id}`}>
+            <div className='recipe' >
+                <h1 className="title">{title}</h1>
+                {image ? <img src={image} alt="not found" /> : <img src={recipeImg} alt='recipe' /> }
+                <div className='card-info' >
+                    <div className='score'>
                         {scoreStar.map(e => <BsStarFill />)}
                         {(score % 10 > 0) && <BsStarHalf />}
                         {scoreStarTotal.map(e => <BsStar />)}
-                        <p>Score: {score}</p>
+                        <p className='text'>Score: {score}</p>
                     </div>
                     <div >
                         {scoreHeart.map(e => <BsHeartFill />)}
                         {(healthScore % 10 > 0) && <BsHeartHalf />}
                         {scoreHeartTotal.map(e => <BsHeart />)}
-                        <p>Health Score: {healthScore}</p>
+                        <p className='text'>Health Score: {healthScore}</p>
                     </div>
                     <li>Diet Types:
                         {diets && diets.map(d => <text> {d},</text>
@@ -48,6 +54,7 @@ const Card = ({ id, title, score, healthScore, img, diets }) => {
                 </div>
             </div>
         </Link>
+    </div>
     );
 };
 

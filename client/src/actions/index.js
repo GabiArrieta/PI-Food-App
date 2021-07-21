@@ -6,13 +6,8 @@ import {
     GET_RECIPES_ID,
     GET_DIETS,
     GET_RECIPES_FOR_DIET,
-    FILTER_A_TO_Z,
-    FILTER_Z_TO_A,
-    FILTER_HIGH_TO_LOW,
-    FILTER_LOW_TO_HIGH,
+    SWITCH_LOADING,
     URL,
-    FILTER_HEALTH_LOW_TO_HIGH,
-    FILTER_HEALTH_HIGH_TO_LOW,
     LOADING
 } from '../utils/constants';
 
@@ -40,13 +35,15 @@ export const getRecipesName = (name) => async (dispatch) => {
 
 export const getRecipesId = (id) => {
     return async (dispatch) => {
-    try {
-        const rta = await axios.get(`${URL}recipes/${id}`);
-        dispatch({type: GET_RECIPES_ID, payload: rta.data})
-    } catch (err) {
-        console.log(err);
-    }
-    }
+        dispatch({type: LOADING});
+        try {
+            const recipes = await axios.get(`${URL}recipes/${id}`);
+            return dispatch({ type: GET_RECIPES_ID, payload: recipes.data });
+        } catch (e) {
+            console.log(e);
+            return dispatch({ type: GET_RECIPES_ID, payload: [] });
+        }
+    };
 }
 
 export const getDiets = () => {
@@ -75,40 +72,8 @@ export const getRecipesForDiet = (diet) => {
     };
 };
 
-export const filterAtoZ = () => {
-    return {
-        type : FILTER_A_TO_Z
+export function switchLoading(boolean) {
+    return function(dispatch) {
+        dispatch({ type: SWITCH_LOADING, payload: boolean })
     };
 };
-
-export const filterZtoA = () => {
-    return {
-        type : FILTER_Z_TO_A
-    };
-};
-
-export const filterHighToLow = () => {
-    return {
-        type: FILTER_HIGH_TO_LOW,
-    };
-};
-
-export const filterLowToHigh = () => {
-    return {
-        type: FILTER_LOW_TO_HIGH,
-    };
-};
-
-export const filterScoreHealthHigh = () => {
-    return {
-        type: FILTER_HEALTH_LOW_TO_HIGH,
-    };
-};
-
-export const filterScoreHealthLow = () => {
-    return {
-        type: FILTER_HEALTH_HIGH_TO_LOW,
-    };
-};
-
-

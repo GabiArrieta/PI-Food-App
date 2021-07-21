@@ -1,26 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getRecipes, getDiets } from "../actions/index";
+import { getRecipes, getDiets } from "../../actions/index";
 import swal from 'sweetalert';
+
+import './form.css';
 
 import axios from 'axios';
 
 
 const formData = {
-  title: "",
-  summary: "",
-  score: "",
-  healthScore: "",
+  title: '',
+  summary: '',
+  score: '',
+	healthScore: '',
+	instructions: '',
   diets: [],
-  instructions: "",
 };
 
-//pasarlo a utils, validaciones
+//validaciones
 export const validate = (recipe) => {
   let error = {};
 
   if (!recipe.title) error.title = "title required";
-  if (!recipe.summary) error.title = "summary required";
+  if (!recipe.summary) error.summary = "summary required";
+  
   if (!recipe.instructions) error.instructions = "type an instruction";
 
   if (!/^([0-9])*$/.test(recipe.score)) error.score = "score is not a number";
@@ -29,37 +32,20 @@ export const validate = (recipe) => {
 
   if (!/^([0-9])*$/.test(recipe.healthScore))
     error.healthScore = "healthScore is not a number";
-  else if (recipe.score < 0 || recipe.score > 100)
-    error.score = "healthScore must be between 0 and 100";
+  else if (recipe.healthScore < 0 || recipe.healthScore > 100)
+    error.healthScore = "healthScore must be between 0 and 100";
 
   if (recipe.diets.length === 0) error.diet = "select at least one diet";
 
   return error;
 };
 
-export const FORMS = [
-  { label: "💬Title", name: "title" },
-  { label: "🫕Summary", name: "summary" },
-  { label: "🍏healthScore", name: "healthScore" },
-  { label: "⭐score", name: "score" },
-  { label: "📄Instructions", name: "instructions" },
-  { label: "🌱Diets", name: "diets" },
-];
-
 const Form = () => {
   const dispatch = useDispatch();
 
   const diets = useSelector((state) => state.diets);
 
-  const [form, setForm] = useState({
-    title: "",
-    summary: "",
-    score: "",
-    healthScore: "",
-    diets: [],
-    instructions: "",
-  });
-
+  const [form, setForm] = useState(formData);
   const [error, setError] = useState({});
 
   useEffect(() => {
@@ -107,7 +93,7 @@ const Form = () => {
         console.log("formulario correcto");
         
         //dispatch(postRecipe(form));
-        axios.post('http://localhost:3008/recipe', form)
+        axios.post('http://localhost:3007/recipe', form)
 
         console.log("se envio la receta");
         //alert("recipe added :) ");
@@ -138,10 +124,13 @@ const Form = () => {
 
   return (
     <div>
-      <h1>Create your own recipe!</h1>
+    <div className='form-main-container'>
+      <h1 className='form-title'>Create your own recipe!</h1>
       <form>
-        <div>
-          <p>💬Title</p>
+        <div className='form-container'>
+          <div className='form-left-container'>
+          
+          <p className={error.title ? 'danger' : 'pass'}>💬{error.title}</p>
           <input
             type="text"
             value={form.title}
@@ -149,55 +138,66 @@ const Form = () => {
             name="title"
             onChange={handleChange}
             placeholder="💬Title"
+            className={error.title & 'danger'}
           />
-          <p>Summary</p>  
+          
+          <p className={error.summary ? 'danger' : 'pass'}>💬{error.summary}</p>
           <textarea
             name="summary"
             id="summary"
             value={form.summary}
             onChange={handleChange}
-            placeholder="Summary"
+            placeholder="🫕Summary"
+            className={error.summary & 'danger'}
+
           ></textarea>
 
-          <p>score</p>
+          <p className={error.score ? 'danger' : 'pass'}>💬{error.score}</p>
           <input
             type="text"
             value={form.score}
             id="score"
             name="score"
             onChange={handleChange}
-            placeholder="Score"
+            placeholder="⭐Score"
+            className={error.score & 'danger'}
+
           />
 
-          <p>healthScore</p>
+        <p className={error.healthScore ? 'danger' : 'pass'}>💬{error.healthScore}</p>
+          
           <input
             type="text"
             value={form.healthScore}
             id="healthScore"
             name="healthScore"
             onChange={handleChange}
-            placeholder="healthScore"
+            placeholder="🍏healthScore"
+            className={error.healthScore & 'danger'}
+
           />
         
-        <p>Instructions</p>  
+        <p className={error.instructions ? 'danger' : 'pass'}>💬{error.instructions}</p>
+          
           <textarea
             name="instructions"
             id="instructions"
             value={form.instructions}
             onChange={handleChange}
-            placeholder="Instructions"
+            placeholder="📄Instructions"
+            className={error.instructions & 'danger'}
           ></textarea>
           </div>
-
-          <div>
+          <div className='form-right-container'>
+              <div className='form-diets'>
             {diets.length > 0 &&
                 diets.map((diet) => (
                     <label
                     	  key={diet.id}
 							          htmlFor={diet.id}
 										>
+                   
 											<input
-											
 												id={diet.id}
 												type='checkbox'
 												name={diet.title
@@ -210,13 +210,14 @@ const Form = () => {
 										</label>
                 )) }
           </div>
-
-        <div>
-        <button onClick={handleReset}> Reset </button>
-        <button onClick={handleSubmit}> Send </button>
-        
+      </div>
+  </div>
+       <div className='form-buttons'>
+        <button onClick={handleReset} className='btn-reset'> Reset </button>
+        <button onClick={handleSubmit} className='btn-create'> Send </button>
         </div>
       </form>
+    </div>
     </div>
   );
 };

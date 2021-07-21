@@ -1,0 +1,26 @@
+.filter-sort {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #ffffff;
+    height: 10vh;
+  }
+  
+  .filter-sort span {
+    font-family: 'Rubik';
+    font-size: 1.2rem;
+    margin-right: 0.3rem;
+  }
+  
+  .filter-sort select {
+    width: 10vw;
+    height: 4vh;
+    margin-right: 1.5rem;
+  }
+  
+  .filter-select {
+    width: 10vw !important;
+  }
+  
+
+ 
