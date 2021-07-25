@@ -7,8 +7,8 @@ const router = Router();
 
 
 router.post('/', async (req, res) => {
-    const { title, summary, score, healthScore, instructions, diets } = req.body;
-    console.log(score);
+    const { title, summary, spoonacularScore, healthScore, instructions, diets } = req.body;
+    //console.log(score);
 
     if(!title || !summary || !(diets.length >= 1)) return res.json({msg: 'faltan datos'});
 
@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
     const createRecipe = await Recipe.create({
         title,
         summary,
-        score,
+        score: spoonacularScore,
         healthScore,
         instructions,
     });
