@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getRecipesName, switchLoading } from '../../actions/index.js';
 
-//import './Search.css'
+import './search.css'
 
 export default function Search({ setSearch }) {
 	const [nameRecipe, setNameRecipe] = useState('');
@@ -27,7 +27,8 @@ export default function Search({ setSearch }) {
 
 	return (
 		<React.Fragment>
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={handleSubmit} >
+				<div className='box'>
 				<input
 					className='input-search'
 					type='text'
@@ -36,6 +37,7 @@ export default function Search({ setSearch }) {
 					onChange={handleChange}
 				/>
 				<button className='btn-search' type='submit'>🔎</button>
+				</div>
 			</form>
 		</React.Fragment>
 	);

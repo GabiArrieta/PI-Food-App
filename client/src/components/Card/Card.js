@@ -29,28 +29,35 @@ const Card = ({ id, title, score, healthScore, image, diets }) => {
     };
 
     return (
-    <div>
+    <div className='container'>
         <Link className='link' to={`/recipes/${id}`}>
-            <div className='recipe' >
+            <div className='card' >
+                <div className='card-image'>
+                {image ? <img src={image} alt="not found" /> : <img src={recipeImg} alt='recipe' className='card-image'/>  } 
+                </div>
+
+                <div className='card-text' >
                 <h1 className="title">{title}</h1>
-                {image ? <img src={image} alt="not found" /> : <img src={recipeImg} alt='recipe' /> }
-                <div className='card-info' >
-                    <div className='score'>
+                <li>Diet Types:
+                        {diets && diets.map(d => <text> {d},</text>
+                        )}
+                    </li>
+                    </div>
+
+                    <div className='card-stats'>
+                    <div className='stat'>
                         {scoreStar.map(e => <BsStarFill />)}
                         {(score % 10 > 0) && <BsStarHalf />}
                         {scoreStarTotal.map(e => <BsStar />)}
                         <p className='text'>Score: {score}</p>
                     </div>
-                    <div >
+                    <div className="stat" >
                         {scoreHeart.map(e => <BsHeartFill />)}
                         {(healthScore % 10 > 0) && <BsHeartHalf />}
                         {scoreHeartTotal.map(e => <BsHeart />)}
                         <p className='text'>Health Score: {healthScore}</p>
                     </div>
-                    <li>Diet Types:
-                        {diets && diets.map(d => <text> {d},</text>
-                        )}
-                    </li>
+                    
                 </div>
             </div>
         </Link>

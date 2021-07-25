@@ -22,5 +22,41 @@
     width: 10vw !important;
   }
   
-
+ .box {
+   width: 500px;
+   
+ }
  
+ .input-search{
+   position: relative;
+  display: inline-block;
+  font-size: 20px;
+  box-sizing: border-box;
+  transition: .5s;
+ }
+
+ .input-search[type="text"] {
+   background: rgb(207, 206, 206);
+   width: 340px;
+   height: 50px;
+   border: none;
+   outline: none;
+   padding: 0 25px;
+   border-radius: 25px 0 0 25px;
+ }
+
+ .btn-search {
+   position: relative;
+   left: -5px;
+   border-radius: 0 25px 25px 0;
+   width: 100px;
+   height: 50px;
+   border: none;
+   outline: none;
+   cursor: pointer;
+   background: #d39f04;
+ }
+
+ .btn-search:hover {
+  background: #ff5722;
+}

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 import './styled.css';
 
@@ -15,7 +16,7 @@ function LandingPage() {
 
             <div className="div_btn">
                 <Link to='/home'>
-                    <button className='btn'> Enter Site</button>
+                <button className='btn'><ArrowForwardIosIcon /></button>
                 </Link>
             </div>
     </div>

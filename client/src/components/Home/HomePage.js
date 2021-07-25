@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getRecipes, switchLoading  } from '../../actions/index';
 
 import loadingImg from '../../img/loadingImg.jpg';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 import Card from '../Card/Card.js';
 import Loading from '../Loading';
@@ -196,14 +198,16 @@ const HomePage = () => {
 		? Math.ceil(searchRecipes.length / numRecipes)
 		: Math.ceil(allRecipes.length / numRecipes);
 
-	const next = function () {
+	const next = function (e) {
+		e.preventDefault();
 		if (page < maxPage) {
 			setOffset(offset + numRecipes);
 			setPage(page + 1);
 		}
 	};
 
-	const previous = function () {
+	const previous = function (e) {
+		e.preventDefault();
 		if (page > 1) {
 			setOffset(offset - numRecipes);
 			setPage(page - 1);
@@ -261,7 +265,7 @@ const HomePage = () => {
 						<div>
 							<span>Sort: </span>
 							<select onChange={handleSort}>
-								<option default value=''></option>
+								<option default value='sort'></option>
 								<option value='asc'>A-Z</option>
 								<option value='des'>Z-A</option>
 							</select>
@@ -320,7 +324,7 @@ const HomePage = () => {
 							image={recipe.img}
 							diets={recipe.diets}
 							healthScore={recipe.healthScore}
-							score={recipe.score}
+							score={recipe.score } 
 						/>
 					))
 				) : (
@@ -328,13 +332,15 @@ const HomePage = () => {
 				)}
 			</div>
 			<div className='pagination'>
-				<button className='btn-page' onClick={previous}>
-				👈
+				<div className="div_btn">
+				<button className='btn_page' onClick={previous}>
+				<ArrowBackIosIcon />
 				</button>
 				<span className='num-page'>{page}</span>
-				<button className='btn-page' onClick={next}>
-				👉
+				<button className='btn_page' onClick={next}>
+				<ArrowForwardIosIcon />
 				</button>
+				</div>
 			</div>
 
        </>

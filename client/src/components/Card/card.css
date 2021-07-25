@@ -1,51 +1,75 @@
-.recipe{
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    background: #f1740d;    
-    border-radius: 15px;
-    font-family: "Rubik";
-    font-weight: bold;
-    color: #f6e5e9;
-    margin: 1rem;
-    width: 25vw;
-    height: 75vh;
-    opacity: 0.95;
-    border: 0.3rem solid #ff9f1c91;
-    box-shadow: 0px 5px 50px rgba(0, 0, 0, 0.5);
-    padding-bottom: 10px;
+.container {
+  margin-left: 50px;
 }
-.link{
-    color: #f6e5e9;
-    text-decoration: none;
-}
-.link:hover{
-    transform: scale(1.02);
-}
-.title{
- display: flex;
- justify-content: center;
- align-items: center;
- height: 100px;
- text-decoration: none;
- font-size: 35px;
- padding: 10px 10px 1px 10px;
- font-size: 1.5rem;
+.card{
+    border-radius: 18px;
+    background: white;
+    font-family: roboto;
+    text-align: center;
+    transition: 0.5s ease;
+    cursor: pointer;
+    margin:30px;
+    box-shadow: 0 0 6px 2px rgba(238, 166, 216, 0.75), 0 40px 25px -15px rgba(0, 0, 0, 0.35);
+    width: 350px;
+  }
+
+img {
+    grid-area: image;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    width: 100%;
 }
 
-.recipe img {
-    width: 25vw;
-    height: 15vw;
-    margin-bottom: 25px;
+.card-image {
+  grid-area: image;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    width: 100%;
 }
 
-.score {
-    flex-direction: column;
-    height: 100px;
-    padding: 1px 5px 10px 5px;
-}
-
-
-.text {
+.title {
     font-size: 25px;
+    margin-bottom: 20px;
+    color: black;
 }
+
+.card-text {
+    grid-area: text;
+    margin: 25px;
+    font-size: 15px;
+  }
+
+  .card-text h1 {
+    color: rgb(49, 49, 49);
+    font-size: 1.7em;
+  }
+
+  .card-text p {
+    color: rgb(71, 70, 70);
+    font-size:15px;
+    font-weight: 300;
+  }
+
+  .card-stats {
+    grid-area: stats; 
+    display: block;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background: #d39f04;
+    align-items: center;
+  }
+
+  .card-stats .stat {
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    padding:10px;
+  }
+
+  .card:hover {
+    transform: scale(1.1);
+    margin: 5px 35px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+  }
+

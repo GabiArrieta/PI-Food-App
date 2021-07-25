@@ -10,12 +10,13 @@ import axios from 'axios';
 
 const formData = {
   title: '',
-  score: '',
+  spoonacularScore: '',
   healthScore: '',
 	instructions: '',
   summary: '',
   diets: [],
 };
+
 
 //validaciones
 export const validate = (recipe) => {
@@ -26,9 +27,9 @@ export const validate = (recipe) => {
   
   if (!recipe.instructions) error.instructions = "type an instruction";
 
-  if (!/^([0-9])*$/.test(recipe.score)) error.score = "score is not a number";
-  else if (recipe.score < 0 || recipe.score > 100)
-    error.score = "score must be between 0 and 100";
+  if (!/^([0-9])*$/.test(recipe.spoonacularScore)) error.spoonacularScore = "spoonacularScore is not a number";
+  else if (recipe.spoonacularScore < 0 || recipe.spoonacularScore > 100)
+    error.spoonacularScore = "spoonacularScore must be between 0 and 100";
 
   if (!/^([0-9])*$/.test(recipe.healthScore))
     error.healthScore = "healthScore is not a number";
@@ -84,7 +85,7 @@ const Form = () => {
 
       if(
       !error.title && form.title &&
-      !error.score && form.score &&
+      !error.spoonacularScore && form.spoonacularScore &&
       !error.healthScore && form.healthScore &&
       !error.instructions && form.instructions &&
       !error.summary && form.summary &&
@@ -150,15 +151,15 @@ const Form = () => {
 
           ></textarea>
 
-          <p className={error.score ? 'danger' : 'pass'}>💬{error.score}</p>
+          <p className={error.spoonacularScore ? 'danger' : 'pass'}>💬{error.spoonacularScore}</p>
           <input
             type="text"
-            value={form.score}
-            id="score"
-            name="score"
+            value={form.spoonacularScore}
+            id="spoonacularScore"
+            name="spoonacularScore"
             onChange={handleChange}
             placeholder="⭐Score"
-            className={error.score & 'danger'}
+            className={error.spoonacularScore & 'danger'}
 
           />
 
