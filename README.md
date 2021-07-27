@@ -4,53 +4,6 @@
 
 # Individual Project - Henry Food
 
-<p align="right">
-  <img height="200" src="./cooking.png" />
-</p>
-
-## Objetivos del Proyecto
-
-- Construir una App utlizando React, Redux, Node y Sequelize.
-- Afirmar y conectar los conceptos aprendidos en la carrera.
-- Aprender mejores prácticas.
-- Aprender y practicar el workflow de GIT.
-- Usar y practicar testing.
-
-## Horarios y Fechas
-
-El proyecto tendrá una duración máxima de tres semanas. En el caso de que completan todas las tareas antes de dicho lapso podrán avisar a su Instructor para coordinar una fecha de presentación del trabajo (DEMO).
-
-## Comenzando
-
- 1. Se debe iniciar git con `git init`
- 2. Crear en su cuenta de GitHub un nuevo repo con el nombre `PI-Food-FT__` donde `__` es el numero de cohorte en el que estas
- 3. Hacer un commit inicial ej: `git add .` => `git commit -m "init"` => `git branch -M main`
- 4. Seguir las instrucciones de GitHub para 'conectar' su repositorio local con GitHub `git remote add........`
- 5. Hacer push de ese commit `git push -u origin main`
- 6. No olvidar que deben regularmente hacer commit y push para mantener el repo actualizado en la nube
-
-Tendrán un `boilerplate` con la estructura general tanto del servidor como de cliente.
-
-__IMPORTANTE:__ Es necesario contar minimamente con la última versión estable de Node y NPM. Asegurarse de contar con ella para poder instalar correctamente las dependecias necesarias para correr el proyecto.
-
-## BoilerPlate
-
-El boilerplate cuenta con dos carpetas: `api` y `client`. En estas carpetas estará el código del back-end y el front-end respectivamente.
-
-En `api` crear un archivo llamado: `.env` que tenga la siguiente forma:
-
-```
-DB_USER=usuariodepostgres
-DB_PASSWORD=passwordDePostgres
-DB_HOST=localhost
-```
-
-Reemplazar `usuariodepostgres` y `passwordDePostgres` con tus propias credenciales para conectarte a postgres. Este archivo va ser ignorado en la subida a github, ya que contiene información sensible (las credenciales).
-
-Adicionalmente será necesario que creen desde psql una base de datos llamada `food`
-
-El contenido de `client` fue creado usando: Create React App.
-
 ## Enunciado
 
 La idea general es crear una aplicación en la cual se puedan ver distintas recetas de comida junto con información relevante de las mismas utilizando la api externa [spoonacular](https://spoonacular.com/food-api) y a partir de ella poder, entre otras cosas:
@@ -58,8 +11,6 @@ La idea general es crear una aplicación en la cual se puedan ver distintas rece
   - Buscar recetas
   - Filtrarlos / Ordenarlos
   - Crear nuevas recetas propias
-
-__IMPORTANTE__: Para poder utilizar esta API externa es necesario crearse una cuenta para obtener una API Key que luego debera ser incluida en todos los request que hagamos a spoonacular simplemente agregando `?apiKey={YOUR_API_KEY}` al final de cada endpoint. Agregar la clave en el archivo `.env` para que la misma no se suba al repositorio por cuestiones de seguridad y utilizarla desde allí. Por otro lado tienen un límite de requests por día por lo que usenlos con cuidado!
 
 __IMPORTANTE__: Para las funcionalidades de filtrado y ordenamiento NO pueden utilizar los endpoints de la API externa que ya devuelven los resultados filtrados u ordenados sino que deben realizarlo ustedes mismos. En particular alguno de los ordenamientos o filtrados debe si o si realizarse desde el frontend.
 
