@@ -22,6 +22,8 @@ __Pagina inicial__: landing page que contiene
 - [ ] La imagen de fondo representativa al proyecto
 - [ ] Botón para ingresar al home (`Ruta principal`)
 
+<img src='./images/landing.png' />
+
 __Ruta principal__: con
 - [ ] Input de búsqueda para encontrar recetas por nombre
 - [ ] Área donde se ve el listado de recetas y que nos muestra su:
