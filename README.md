@@ -1,5 +1,5 @@
 <p align='left'>
-    <img src='./images/chef.png' </img>
+    <img src='./images/chef.png width="300" height='280'/>
 </p>
 
 # App Food
