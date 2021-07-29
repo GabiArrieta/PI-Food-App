@@ -1,8 +1,7 @@
-<p align='center'>
-    <img src='./images/chef.png width="100" height="100"/>
-</p>
-
 # App Food
+
+<img src='./images/landingPage.png' />
+
 ## Search and Create your Recipes!
 Aplicación a través de la cual se pueden ver distintas recetas de comida junto con información relevante de las mismas utilizando la api externa [spoonacular](https://spoonacular.com/food-api) y a partir de ella poder, entre otras cosas:
 
@@ -22,8 +21,6 @@ El desarrollo del front-end contiene las siguientes rutas:
 __Pagina inicial__: landing page que contiene
 - [ ] La imagen de fondo representativa al proyecto
 - [ ] Botón para ingresar al home (`Ruta principal`)
-
-<img src='./images/landingPage.png' />
 
 __Ruta principal__: con
 - [ ] Input de búsqueda para encontrar recetas por nombre
