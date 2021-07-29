@@ -16,7 +16,7 @@ function LandingPage() {
 
             <div className="div_btn">
                 <Link to='/home'>
-                <button className='btn'><ArrowForwardIosIcon /></button>
+                <button className='btn-landing'><ArrowForwardIosIcon className='arrow-icon' /></button>
                 </Link>
             </div>
     </div>

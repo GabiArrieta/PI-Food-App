@@ -4,6 +4,8 @@ import { getRecipes, getDiets } from "../../actions/index";
 import swal from 'sweetalert';
 
 import './form.css';
+import SendIcon from '@material-ui/icons/Send';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 import axios from 'axios';
 
@@ -72,6 +74,7 @@ const Form = () => {
             ...form,
             diets: [...form.diets, e.target.id],
         });
+        console.log(form.diets.title);
     } else {
         setForm({
             ...form,
@@ -89,7 +92,7 @@ const Form = () => {
       !error.healthScore && form.healthScore &&
       !error.instructions && form.instructions &&
       !error.summary && form.summary &&
-      form.diets.length ){
+      form.diets.length){
 
         //console.log("formulario correcto");
         
@@ -122,14 +125,13 @@ const Form = () => {
   };
 
   return (
-    <div>
     <div className='form-main-container'>
+      <div className='form-container'>
+        
+      <form className='form-div'>
+      <div className='form-items'>
       <h1 className='form-title'>Create your own recipe!</h1>
-      <form>
-        <div className='form-container'>
-          <div className='form-left-container'>
-          
-          <p className={error.title ? 'danger' : 'pass'}>💬{error.title}</p>
+          <p className={error.title ? 'danger' : 'pass'}>🔻{error.title}</p>
           <input
             type="text"
             value={form.title}
@@ -140,18 +142,8 @@ const Form = () => {
             className={error.title & 'danger'}
           />
           
-          <p className={error.summary ? 'danger' : 'pass'}>💬{error.summary}</p>
-          <textarea
-            name="summary"
-            id="summary"
-            value={form.summary}
-            onChange={handleChange}
-            placeholder="🫕Summary"
-            className={error.summary & 'danger'}
-
-          ></textarea>
-
-          <p className={error.spoonacularScore ? 'danger' : 'pass'}>💬{error.spoonacularScore}</p>
+          
+          <p className={error.spoonacularScore ? 'danger' : 'pass'}>🔻{error.spoonacularScore}</p>
           <input
             type="text"
             value={form.spoonacularScore}
@@ -163,8 +155,7 @@ const Form = () => {
 
           />
 
-        <p className={error.healthScore ? 'danger' : 'pass'}>💬{error.healthScore}</p>
-          
+        <p className={error.healthScore ? 'danger' : 'pass'}>🔻{error.healthScore}</p>
           <input
             type="text"
             value={form.healthScore}
@@ -175,9 +166,17 @@ const Form = () => {
             className={error.healthScore & 'danger'}
 
           />
-        
-        <p className={error.instructions ? 'danger' : 'pass'}>💬{error.instructions}</p>
-          
+        <p className={error.summary ? 'danger' : 'pass'}>🔻{error.summary}</p>
+          <textarea
+            name="summary"
+            id="summary"
+            value={form.summary}
+            onChange={handleChange}
+            placeholder="🫕Summary"
+            className={error.summary & 'danger'}
+
+          ></textarea>
+        <p className={error.instructions ? 'danger' : 'pass'}>🔻{error.instructions}</p>
           <textarea
             name="instructions"
             id="instructions"
@@ -187,17 +186,24 @@ const Form = () => {
             className={error.instructions & 'danger'}
           ></textarea>
           </div>
-          <div className='form-right-container'>
-              <div className='form-diets'>
+          
+          <div className='diets-container'>
+              
             {diets.length > 0 &&
                 diets.map((diet) => (
-                    <label
-                    	  key={diet.id}
-							          htmlFor={diet.id}
+                  <label
+											htmlFor={diet.id
+												.toLowerCase()
+												.replace(' ', '')
+												.replace('-', '')}
+                        className='text-label'
 										>
                    
 											<input
-												id={diet.id}
+												id={diet.id
+													.toLowerCase()
+													.replace(' ', '')
+													.replace('-', '')}
 												type='checkbox'
 												name={diet.title
 													.toLowerCase()
@@ -205,18 +211,16 @@ const Form = () => {
 													.replace('-', '')}
 												onChange={handleChecked}
 											/>
-											{diet.title}
+											<span class='checkboxtext'> {diet.title} </span>
 										</label>
                 )) }
           </div>
-      </div>
-  </div>
        <div className='form-buttons'>
-        <button onClick={handleReset} className='btn-reset'> Reset </button>
-        <button onClick={handleSubmit} className='btn-create'> Send </button>
+        <button onClick={handleReset} className='btn-reset'> <DeleteIcon /> </button>
+        <button onClick={handleSubmit} className='btn-create'> <SendIcon /> </button>
         </div>
       </form>
-    </div>
+      </div>
     </div>
   );
 };

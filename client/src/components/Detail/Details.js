@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector  } from 'react-redux';
-import { getRecipesId } from '../../actions/index';
+import { getRecipesId, getDiets } from '../../actions/index';
 
-import loadingImg from '../../img/loadingImg.jpg';
 import chef from '../../img/chef.png';
 
 import './details.css'
@@ -26,37 +25,32 @@ export default function Detail({
 	}, [dispatch, id]);
 
 	return (
-		<React.Fragment>
-			<div className='main-container'>
+		<>
 				{loading ? (
-					<div>
 					<Loading />
-						{/* <img
-							className='loading rotated'
-							src={loadingImg}
-							alt='Loading'
-						/>
-						<h2>¡Loading...!</h2> */}
-					</div>
 				) : recipe.title ? (
-					<>
+					<div className='recipe-container'>
+					<div className="container-div">
 						<h1 className='detail-title'>{recipe.title}</h1>
 						<div className='detail-container'>
-							<div className='left-container'>
                             {recipe.img ? <img src={recipe.img} alt="not found1" /> : <img src={chef} alt="not found2" />}
-								<div className='detail-points'>
-									<h1>
+								<div className='detail-scores'>
+									<h2>
 										{recipe.score && 
 											`Score: ${recipe.score} Points`}
-									</h1>
-									<h1>
+									</h2>
+									<h2>
 										{recipe.healthScore &&
 											`HealthScore: ${recipe.healthScore}%`}
-									</h1>
+									</h2>
 								</div>
-							</div>
-							<div className='right-container'>
-								<h2>{recipe.summary && 'Summary'}</h2>
+								<div className='detail-diets'>
+                                    {recipe.diets && 
+									recipe.diets.map(d => <h2>🍅 {d} 🥑</h2>
+                                    )}
+								</div>
+							<div className='detail-recipe'>
+								<h2>{recipe.summary && '📑Summary'}</h2>
 								<div className='detail-summary'>
 									<p
 										dangerouslySetInnerHTML={{
@@ -64,8 +58,8 @@ export default function Detail({
 										}}
 									/>
 								</div>
-								<h2>{recipe.instructions && 'Instructions'}</h2>
-								<div className='detail-instructions'>
+								<h2>{recipe.instructions && '✍️Instructions'}</h2>
+								<div className='detail-recipe'>
 									<p
 										dangerouslySetInnerHTML={{
 											__html: recipe.instructions,
@@ -74,11 +68,11 @@ export default function Detail({
 								</div>
 							</div>
 						</div>
-					</>
+						</div>
+					</div>
 				) : (
 					<h1>Something went wrong, please try again!</h1>
-				)}
-			</div>
-		</React.Fragment>
-	);
-}
+				)} 
+		</>
+  );
+};

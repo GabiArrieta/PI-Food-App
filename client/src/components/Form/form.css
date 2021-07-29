@@ -1,72 +1,91 @@
-.form-main-container {
+.form-container {
+	margin-top: 70px;
+	align-items: center;
+	justify-content: center;
+}
+
+.form-div{
+	background-color: rgb(255, 255, 255);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: #ebebeb;
-	min-height: 100vh;
+	color: rgb(34, 34, 34);
+    list-style: none;
 }
+
+.form-items {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.form-items input {
+	height: 40px;
+	width: 100%;
+	margin: 10px;
+}
+
+.form-items input::placeholder{
+	font-size: 20px;
+}
+
+.form-items textarea {
+	height: 100px;
+	width: 100%;
+	margin: 10px;
+}
+
+textarea::placeholder {
+	font-size: 20px;
+}
+
 
 .form-title {
-	color: #bb0e56;
-}
-
-.form-container {
-	display: flex;
-}
-
-.form-left-container {
-	display: flex;
-	flex-direction: column;
-	margin: 0 5rem;
-}
-
-.form-right-container {
-	display: flex;
-	flex-direction: column;
-	margin: 0 5rem;
-}
-
-.form-left-container input {
-	padding: 0 0.5rem;
-	height: 6vh;
-	width: 20vw;
-	border-radius: 10px;
-	margin-bottom: 1rem;
-}
-
-.form-left-container textarea {
-	padding: 1rem 0.5rem;
-	height: 8vh;
-	width: 20vw;
-	border-radius: 5px;
-	margin-bottom: 1rem;
+	color: rgb(9, 153, 146);
+	margin-bottom: 30px;
+	font-size: 50px;
 }
 
 .form-buttons {
 	display: flex;
 	justify-content: center;
-	top: 2rem;
+	margin-top: 1rem;
 }
 
-.form-diets {
-	display: flex;
-	flex-direction: column;
-	font-family: 'Poppins';
+.diets-container {
+	display: inline;
+    width: 39%;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
-.form-diets label {
-	margin: 0.3rem 0;
+.diets-container label {
+	margin-right: 15px;
+}
+
+input[type=checkbox]{
+	-ms-transform: scale(1); 
+	-moz-transform: scale(1); 
+	-webkit-transform: scale(1); 
+	-o-transform: scale(1); 
+	padding: 10px;
+}
+
+.checkboxtext {
+	font-size: 110%;
+	display: inline;
+	padding-left: 10px;
 }
 
 .btn-create {
 	font-family: 'Rubik', sans-serif;
 	font-weight: 500;
-	background-color: #2ec4b5;
+	background-color: #03810a;
 	border-radius: 10px;
 	cursor: pointer;
 	color: #ffffff;
 	font-size: 1.2em;
-	width: 12vw;
+	width: 8vw;
 	height: 7vh;
 	margin-left: 3rem;
 }
@@ -79,12 +98,12 @@
 .btn-reset {
 	font-family: 'Rubik', sans-serif;
 	font-weight: 500;
-	background-color: #ff9f1c;
+	background-color: #eb0f34;
 	border-radius: 10px;
 	cursor: pointer;
 	color: #ffffff;
 	font-size: 1.2em;
-	width: 12vw;
+	width: 8vw;
 	height: 7vh;
 }
 
@@ -94,11 +113,11 @@
 }
 
 p.danger {
-	font-family: 'Poppins';
-	color: #f55c47;
+	color: #f71d00;
 	text-align: center;
 	margin: 0;
-	font-size: 0.7rem;
+	font-size: 1rem;
+	font-style: italic;
 }
 
 p.pass {

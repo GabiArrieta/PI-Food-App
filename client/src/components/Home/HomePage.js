@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRecipes, switchLoading  } from '../../actions/index';
 
-import loadingImg from '../../img/loadingImg.jpg';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
@@ -254,8 +253,6 @@ const HomePage = () => {
 		search,
 	]);
 
-
-    
     return (
     <>
         
@@ -277,7 +274,7 @@ const HomePage = () => {
 								<option value='low'>Low</option>
 							</select>
 
-							<span>Filter By Diet: </span>
+							<span>Filter: </span>
 							<select
 								className='filter-select'
 								onChange={(e) => setFilter(e.target.value)}
@@ -308,10 +305,7 @@ const HomePage = () => {
 			<div className='recipes-home'>
 				{loading ? (
 					<div>
-						<img
-							className='loading rotated'
-							src={loadingImg}
-							alt='Loading'
+						<Loading
 						/>
 						<h2>¡Loading...!</h2>
 					</div>

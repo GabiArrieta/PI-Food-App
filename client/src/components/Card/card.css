@@ -3,7 +3,7 @@
 }
 .card{
     border-radius: 18px;
-    background: white;
+    background: rgb(255, 255, 255);
     font-family: roboto;
     text-align: center;
     transition: 0.5s ease;
@@ -39,6 +39,15 @@ img {
     font-size: 15px;
   }
 
+.card-diets {
+  color:rgb(6, 87, 134);
+  font-style: italic;
+}
+
+.text-stats {
+  padding-top: 10px;
+  font-size: 20px;
+}
   .card-text h1 {
     color: rgb(49, 49, 49);
     font-size: 1.7em;
@@ -58,13 +67,14 @@ img {
     border-bottom-right-radius: 15px;
     background: #d39f04;
     align-items: center;
+    padding-top: 20px;
   }
 
   .card-stats .stat {
     justify-content: center;
     flex-direction: column;
     color: white;
-    padding:10px;
+    padding:13px;
   }
 
   .card:hover {

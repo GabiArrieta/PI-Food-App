@@ -8,7 +8,7 @@ import './card.css';
 
 const Card = ({ id, title, score, healthScore, image, diets }) => {
 
-    console.log(title, score, healthScore, image, diets );
+    //console.log('dietas de la card', diets );
     let scoreStar = [];
     let scoreHeart = [];
     let scoreStarTotal = [];
@@ -28,6 +28,16 @@ const Card = ({ id, title, score, healthScore, image, diets }) => {
         scoreHeartTotal.push(i);
     };
 
+    const getDiets = function () {
+		let arrayDiets = [];
+		if (diets) {
+			for(let diet of diets) {
+				typeof diet === 'object' ? arrayDiets.push(diet.title) : arrayDiets.push(diet);
+			}
+		}
+		return arrayDiets.length ? arrayDiets.join(', ') : 'not found'
+	}
+
     return (
     <div className='container'>
         <Link className='link' to={`/recipes/${id}`}>
@@ -38,24 +48,22 @@ const Card = ({ id, title, score, healthScore, image, diets }) => {
 
                 <div className='card-text' >
                 <h1 className="title">{title}</h1>
-                <li>Diet Types:
-                        {diets && diets.map(d => <text> {d},</text>
-                        )}
-                    </li>
-                    </div>
+
+                <h4 className='card-diets'>{getDiets()}</h4>
+                     </div>
 
                     <div className='card-stats'>
                     <div className='stat'>
                         {scoreStar.map(e => <BsStarFill />)}
                         {(score % 10 > 0) && <BsStarHalf />}
                         {scoreStarTotal.map(e => <BsStar />)}
-                        <p className='text'>Score: {score}</p>
+                        <p className='text-stats'>Score: {score}</p>
                     </div>
                     <div className="stat" >
                         {scoreHeart.map(e => <BsHeartFill />)}
                         {(healthScore % 10 > 0) && <BsHeartHalf />}
                         {scoreHeartTotal.map(e => <BsHeart />)}
-                        <p className='text'>Health Score: {healthScore}</p>
+                        <p className='text-stats'>Health Score: {healthScore}</p>
                     </div>
                     
                 </div>

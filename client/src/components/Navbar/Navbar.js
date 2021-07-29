@@ -9,7 +9,7 @@ export default function Navbar() {
     <div className="navbar">
         <div className="nav-logo">
             <Link to='/' className="brand-text-navbar">
-                <img src={createR} alt="" width="280" height='250'/>
+                <img src={createR} alt="" width="300" height='280'/>
                 {/* <h2>Food App</h2> */}
             </Link>
             </div>

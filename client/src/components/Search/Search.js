@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getRecipesName, switchLoading } from '../../actions/index.js';
-
+import SearchIcon from '@material-ui/icons/Search';
 import './search.css'
 
 export default function Search({ setSearch }) {
@@ -36,7 +36,9 @@ export default function Search({ setSearch }) {
 					value={nameRecipe}
 					onChange={handleChange}
 				/>
-				<button className='btn-search' type='submit'>🔎</button>
+				<button className='btn-search' type='submit'>
+				<SearchIcon className="searchIcon" />
+				</button>
 				</div>
 			</form>
 		</React.Fragment>
