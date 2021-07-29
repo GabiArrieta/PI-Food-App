@@ -22,13 +22,15 @@ router.post('/', async (req, res) => {
     });
 
 
-    const dietasTipos = await Diet.findAll({
-      where: {
-        title: diets,
-      },
-    });
+    // const dietasTipos = await Diet.findAll({
+    //   where: {
+    //     title: diets,
+    //   },
+    // });
 
-    createRecipe.setDiets(dietasTipos);
+    // createRecipe.setDiets(dietasTipos);
+
+    createRecipe.setDiets(diets);
 
     res.json(createRecipe);
 
