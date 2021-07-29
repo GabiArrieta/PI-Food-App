@@ -1,31 +1,15 @@
 <p align='left'>
-    <img src='https://static.wixstatic.com/media/85087f_0d84cbeaeb824fca8f7ff18d7c9eaafd~mv2.png/v1/fill/w_160,h_30,al_c,q_85,usm_0.66_1.00_0.01/Logo_completo_Color_1PNG.webp' </img>
+    <img src='./images/chef.png' </img>
 </p>
 
-# Individual Project - Henry Food
-
-## Enunciado
-
-La idea general es crear una aplicación en la cual se puedan ver distintas recetas de comida junto con información relevante de las mismas utilizando la api externa [spoonacular](https://spoonacular.com/food-api) y a partir de ella poder, entre otras cosas:
+# App Food
+## Search and Create your Recipes!
+Aplicación a través de la cual se pueden ver distintas recetas de comida junto con información relevante de las mismas utilizando la api externa [spoonacular](https://spoonacular.com/food-api) y a partir de ella poder, entre otras cosas:
 
   - Buscar recetas
-  - Filtrarlos / Ordenarlos
+  - Filtrarlas / Ordenarlas
   - Crear nuevas recetas propias
-
-__IMPORTANTE__: Para las funcionalidades de filtrado y ordenamiento NO pueden utilizar los endpoints de la API externa que ya devuelven los resultados filtrados u ordenados sino que deben realizarlo ustedes mismos. En particular alguno de los ordenamientos o filtrados debe si o si realizarse desde el frontend.
-
-### Únicos Endpoints/Flags que pueden utilizar
-
-  * GET https://api.spoonacular.com/recipes/complexSearch
-    - Para obtener mayor información sobre las recetas, como por ejemplo el tipo de dieta deben agregar el flag `&addRecipeInformation=true` a este endpoint
-    - Para los tipos de dieta deben tener en cuenta las propiedades vegetarian, vegan, glutenFree por un lado y también analizar las que se incluyan dentro de la propiedad `diets`
-  * GET https://api.spoonacular.com/recipes/{id}/information
-
-### Requerimientos mínimos:
-
-A continuación se detallaran los requerimientos mínimos para la aprobación del proyecto individial. Aquellos que deseen agregar más funcionalidades podrán hacerlo. En cuanto al diseño visual no va a haber wireframes ni prototipos prefijados sino que tendrán libertad de hacerlo a su gusto pero tienen que aplicar los conocimientos de estilos vistos en el curso para que quede agradable a la vista.
-
-#### Tecnologías necesarias:
+#### Tecnologías utilizadas:
 - [ ] React
 - [ ] Redux
 - [ ] Express
@@ -33,15 +17,17 @@ A continuación se detallaran los requerimientos mínimos para la aprobación de
 
 #### Frontend
 
-Se debe desarrollar una aplicación de React/Redux que contenga las siguientes pantallas/rutas.
+El desarrollo del front-end contiene las siguientes rutas: 
 
-__Pagina inicial__: deben armar una landing page con
-- [ ] Alguna imagen de fondo representativa al proyecto
+__Pagina inicial__: landing page que contiene
+- [ ] La imagen de fondo representativa al proyecto
 - [ ] Botón para ingresar al home (`Ruta principal`)
 
-__Ruta principal__: debe contener
+<img src='./images/landingPage.png' </img>
+
+__Ruta principal__: con
 - [ ] Input de búsqueda para encontrar recetas por nombre
-- [ ] Área donde se verá el listado de recetas. Deberá mostrar su:
+- [ ] Área donde se ve el listado de recetas y que nos muestra su:
   - Imagen
   - Nombre
   - Tipo de dieta (vegetariano, vegano, apto celíaco, etc)
@@ -49,16 +35,21 @@ __Ruta principal__: debe contener
 - [ ] Botones/Opciones para ordenar tanto ascendentemente como descendentemente las recetas por orden alfabético y por puntuación
 - [ ] Paginado para ir buscando y mostrando las siguientes recetas
 
-__IMPORTANTE__: Dentro de la Ruta Principal se deben mostrar tanto las recetas traidas desde la API como así también las de la base de datos. Debido a que en la API existen alrededor de 5 mil recetas, por cuestiones de performance pueden tomar la simplificación de obtener y paginar las primeras 100.
+<img src='./images/homePage.png' />
 
-__Ruta de detalle de receta__: debe contener
+
+__DATOS__: Dentro de la Ruta Principal se muestran tanto las recetas traidas desde la API como así también las de la base de datos.
+
+__Ruta de detalle de receta__: contiene
 - [ ] Los campos mostrados en la ruta principal para cada receta (imagen, nombre, tipo de plato y tipo de dieta)
 - [ ] Resumen del plato
 - [ ] Puntuación
 - [ ] Nivel de "comida saludable"
 - [ ] Paso a paso
 
-__Ruta de creación de recetas__: debe contener
+<img src='./images/detailPage.png' />
+
+__Ruta de creación de recetas__: contiene
 - [ ] Un formulario __controlado__ con los siguientes campos
   - Nombre
   - Resumen del plato
@@ -68,9 +59,11 @@ __Ruta de creación de recetas__: debe contener
 - [ ] Posibilidad de seleccionar/agregar uno o más tipos de dietas
 - [ ] Botón/Opción para crear una nueva receta
 
+<img src='./images/formPage.png' />
+
 #### Base de datos
 
-El modelo de la base de datos deberá tener las siguientes entidades (Aquellas propiedades marcadas con asterisco deben ser obligatorias):
+El modelo de la base de datos fue creado con las siguientes entidades:
 
 - [ ] Receta con las siguientes propiedades:
   - ID: *
@@ -83,32 +76,20 @@ El modelo de la base de datos deberá tener las siguientes entidades (Aquellas p
   - ID
   - Nombre
 
-
-__IMPORTANTE__: Pensar como modelar los IDs de las recetas en la base de datos. Existen distintas formas correctas de hacerlo pero tener en cuenta que cuando hagamos click en alguna receta, esta puede provenir de la API o de la Base de Datos por lo que cuando muestre su detalle no debería haber ambigüedad en cual se debería mostrar. Ver la forma de diferenciarlas cuando querramos acceder al detalle de la misma.
-
-
 #### Backend
 
-Se debe desarrollar un servidor en Node/Express con las siguientes rutas:
-
-__IMPORTANTE__: No está permitido utilizar los filtrados, ordenamientos y paginados brindados por la API externa, todas estas funcionalidades tienen que implementarlas ustedes.
+Fue desarollado con un servidor en Node/Express con las siguientes rutas:
 
 - [ ] __GET /recipes?name="..."__:
-  - Obtener un listado de las primeras 9 recetas que contengan la palabra ingresada como query paraeter
-  - Si no existe ninguna receta mostrar un mensaje adecuado
+  - Obtiene un listado de las primeras 9 recetas que contengan la palabra ingresada como query paraeter
+  - Si no existe ninguna receta nos muestra un mensaje adecuado
 - [ ] __GET /recipes/{idReceta}__:
-  - Obtener el detalle de una receta en particular
-  - Debe traer solo los datos pedidos en la ruta de detalle de receta
-  - Incluir los tipos de dieta asociados
+  - Obtiene el detalle de una receta en particular
+  - Trae solo los datos pedidos en la ruta de detalle de receta
+  - Incluye los tipos de dieta asociados
 - [ ] __GET /types__:
-  - Obtener todos los tipos de dieta posibles
-  - En una primera instancia, cuando no exista ninguno, deberán precargar la base de datos con los tipos de datos indicados por spoonacular [acá](https://spoonacular.com/food-api/docs#Diets)
+  - Obtiene todos los tipos de dieta posibles
+  - En una primera instancia, cuando no exista ninguno, precarga en la base de datos con los tipos de datos indicados por spoonacular [acá](https://spoonacular.com/food-api/docs#Diets)
 - [ ] __POST /recipe__:
   - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de recetas por body
   - Crea una receta en la base de datos
-
-
-#### Testing
-- [ ] Al menos tener un componente del frontend con sus tests respectivos
-- [ ] Al menos tener una ruta del backend con sus tests respectivos
-- [ ] Al menos tener un modelo de la base de datos con sus tests respectivos
