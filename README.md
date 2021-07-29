@@ -1,5 +1,5 @@
-<p align='left'>
-    <img src='./images/chef.png width="300" height='280'/>
+<p align='center'>
+    <img src='./images/chef.png width="100" height="100"/>
 </p>
 
 # App Food
@@ -23,7 +23,7 @@ __Pagina inicial__: landing page que contiene
 - [ ] La imagen de fondo representativa al proyecto
 - [ ] Botón para ingresar al home (`Ruta principal`)
 
-<img src='./images/landingPage.png' </img>
+<img src='./images/landingPage.png' />
 
 __Ruta principal__: con
 - [ ] Input de búsqueda para encontrar recetas por nombre
